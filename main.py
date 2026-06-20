@@ -69,6 +69,7 @@ def run_agent(question: str):
         HumanMessage(content=question),
     ]
 
+    # ReAct Loop (Agent Loop)
     for iteration in range(1, MAX_ITERATIONS + 1):
         print(f"\n------------Iteration {iteration} -------- ")
 
@@ -82,6 +83,7 @@ def run_agent(question: str):
             print(f"\n Final answer: {ai_message.content}")
             return ai_message.content
 
+        # Process only the first tool call - force one tool per iteration
         tool_call = tool_calls[0]
         tool_name = tool_call.get('name')
         tool_args = tool_call.get("args", {})
@@ -97,7 +99,6 @@ def run_agent(question: str):
 
         # Till here our llm just collected the tool just check image algorithm till here ./image.png.  -> For this process till here cal it as Reasoning(ReAct agent)
         print(f"     [Tool result].   {observation}")
-        # breakpoint()
 
 
         messages.append(ai_message)
