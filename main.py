@@ -69,7 +69,7 @@ def run_agent(question: str):
         HumanMessage(content=question),
     ]
 
-    # ReAct Loop (Agent Loop)
+    # ReAct Loop (Agent Loop or Agentic loop)
     for iteration in range(1, MAX_ITERATIONS + 1):
         print(f"\n------------Iteration {iteration} -------- ")
 
