@@ -23,6 +23,19 @@ The agent loop in `main.py` manually implements the ReAct (Reasoning + Acting) p
 4. LLM is called again with the updated context
 5. Repeat until the LLM returns a final answer (no more tool calls)
 
+## Shortcut — Layer 0
+
+If you don't need to understand the internals, `create_react_agent` from `langgraph.prebuilt` handles the entire loop in one line:
+
+```python
+from langgraph.prebuilt import create_react_agent
+
+agent = create_react_agent(llm, tools)
+result = agent.invoke({"messages": [HumanMessage(content="...")]})
+```
+
+This replaces the entire manual `run_agent()` loop — tool dispatch, `ToolMessage` building, iteration tracking — all handled internally. The manual loop in this branch exists purely to show what's happening inside that one line.
+
 ## What's covered
 
 - How the **ReAct Loop (Layer 1)** works step by step
