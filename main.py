@@ -10,11 +10,8 @@ MAX_ITERATIONS = 10
 MODEL = "qwen3:1.7b"
 
 
-
-
+# We are going to follow layer one from this Architecture of this branch.png
 # ------------------ Tools (langchian @tool decorator) ------------------
-
-
 
 @tool
 def get_product_price(product: str) -> float:
@@ -32,7 +29,7 @@ def apply_discount(price: float, discount_tier: str) -> float:
     discount = discounts.get(discount_tier.lower(), 0.0)
     return price * (1 - discount)
 
-
+# Here is the clean picture of this below code agent-loop (Layer 1)i.e ./image.png
 # ------------------- Agent Loop -------------------
 
 @traceable(name="LangChain Agent Loop")
@@ -74,7 +71,6 @@ def run_agent(question: str):
         print(f"\n------------Iteration {iteration} -------- ")
 
         ai_message = llm_with_tools.invoke(messages)
-        # breakpoint()
 
         tool_calls = ai_message.tool_calls
 
@@ -97,7 +93,6 @@ def run_agent(question: str):
         
         observation = tool_to_use.invoke(tool_args)
 
-        # Till here our llm just collected the tool just check image algorithm till here ./image.png.  -> For this process till here cal it as Reasoning(ReAct agent)
         print(f"     [Tool result].   {observation}")
 
 
