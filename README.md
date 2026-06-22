@@ -2,13 +2,13 @@
 
 ## Branches
 
-### `project/hello-world`
+### 1. `project/hello-world`
 The starting point. Sets up the project, installs dependencies, and runs a basic LangChain agent with a mock search tool. No real API calls — just enough to verify everything works and understand the basic structure of an agent.
 
-### `project/search-agent`
+### 2. `project/search-agent`
 Builds a real search agent using `create_agent()` with Tavily for live web search. Introduces structured output via Pydantic models (`AgentResponse`, `Source`). This is **Layer 0** — LangChain and LangGraph handle the entire agent loop for you.
 
-### `projects/agents-under-the-hood`
+### 3. `projects/agents-under-the-hood`  ← you are here
 Breaks open the black box. Shows how the agent loop works internally by implementing it manually, without relying on `create_react_agent()`. Contains two files covering **Layer 1** in two ways — once with LangChain primitives, once with raw Ollama.
 
 ---
