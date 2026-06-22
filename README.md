@@ -1,150 +1,122 @@
-# LangChain- Develop AI Agents with LangChain & LangGraph 🦜🔗
+# LangChain Course — Branch Guide
 
-**Learn LangChain and LangGraph by building real world AI Agents (Python, Latest Version V.1.0+)**
+## Branches
 
-This course is designed to teach you how to QUICKLY harness the power of the LangChain library for LLM applications. Build 3 end-to-end working LangChain based generative AI applications with no fluff, no toy examples - just real projects using real APIs and real-world skills.
+### 1. `project/hello-world`
+The starting point. Sets up the project, installs dependencies, and runs a basic LangChain agent with a mock search tool. No real API calls — just enough to verify everything works and understand the basic structure of an agent.
 
-![LangChain Logo](/static/LangChain_OSS%20Lockup_light.png)
-![LangGraph Logo](/static/LangGraph_OSS%20Lockup_light.png)
+### 2. `project/search-agent`
+Builds a real search agent using `create_agent()` with Tavily for live web search. Introduces structured output via Pydantic models (`AgentResponse`, `Source`). This is **Layer 0** — LangChain and LangGraph handle the entire agent loop for you.
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/EdenMarco177?style=social)](https://twitter.com/EdenMarco177)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+### 3. `projects/agents-under-the-hood`
+Breaks open the black box. Shows how the agent loop works internally by implementing it manually, without relying on `create_react_agent()`. Covers Layer 1 in two ways — once with LangChain primitives, once with raw Ollama.
 
-[![udemy](https://img.shields.io/badge/LangChain%20Udemy%20Course%20Coupon%20%2412.99-brightgreen)](https://www.udemy.com/course/langchain/?couponCode=APRIL-2026)
-
-
-
-## 💡 What You'll Build 
-
-This course takes you through building 7 real-world AI agent projects, from simple hello-world applications to advanced agentic systems:
-
-| Project | Type | Description |
-|---------|------|-------------|
-| 👋 [LangChain Hello World](https://github.com/emarco177/langchain-course/tree/project/hello-world) | Branch (`project/hello-world`) | Your first AI agent - basic structure and LLM integration |
-| 🔎  [Modern Search Agent](https://github.com/emarco177/ice_breaker/tree/project/search-agent) | Branch (`project/search-agent`) | Build search agents using LangChain v.1's `create_agent` interface with custom tools, Tavily integration, and structured outputs |
-| 🧠 [Agents Under The Hood](https://github.com/emarco177/langchain-course/tree/project/agents-under-the-hood) | Branch (`project/agents-under-the-hood`) | Understanding reasoning and acting patterns in AI agents |
-| 📄 [RAG Gist](https://github.com/emarco177/langchain-course/tree/project/rag-gist) | Branch (`project/rag-gist`) | The gist of retrieval-augmented generation |
-| 📚 [Documentation Helper](https://github.com/emarco177/documentation-helper) | External Repo | Intelligent documentation assistant |
-| 💻 [Code Interpreter](https://github.com/emarco177/langchain-course/tree/project/code-interpreter) | Branch (`project/code-interpreter`) | AI-powered code execution and analysis |
-| 🪞 [Reflection Agent](https://github.com/emarco177/langgraph-course/tree/project/reflection-agent) | External Repo | Self-improving agent with reflection and critique capabilities |
-| 🔄 [Reflexion Agent](https://github.com/emarco177/langgraph-course/tree/project/reflexion-agent) | External Repo | Advanced self-correcting agent using reflexion techniques |
-| 🤖 [Agentic RAG](https://github.com/emarco177/langgraph-course/tree/project/agentic-rag) | External Repo | Advanced retrieval-augmented generation system |
-
-## 📚 Course Highlights 
-
-- **7 Complete Projects** - From beginner to advanced implementations including Ice Breaker, Documentation Helper, and Code Interpreter
-- **Real-World Applications** - Build agents that solve actual problems with live APIs
-- **Modern Tech Stack** - LangChain v0.3+, LangGraph, Pinecone, FAISS, Streamlit
-- **Practical Skills** - Learn RAG, vector databases, prompt engineering, and agent workflows
-- **Interactive Learning** - Follow commits chronologically for step-by-step learning
-
-## 🤔 Learning Path 
-
-### Phase 1: Foundations
-1. **Hello World Chain** - Basic agent structure and LLM integration
-2. **Code Interpreter** - Tool calling and code execution capabilities
-
-### Phase 2: Real-World Applications
-3. **Ice Breaker** - Data collection and social media integration
-4. **Documentation Helper** - RAG implementation and knowledge management
-
-### Phase 3: Advanced Concepts
-5. **Blog Analyzer** - Multi-step reasoning and content analysis
-6. **Agentic RAG** - Self-correcting agents with memory and planning
-
-## ▶️ Getting Started 
-
-### 🛠️ Prerequisites 
-- **This is not a beginner course** - Basic software engineering concepts needed
-- Familiarity with: git, Python, environment variables, classes, testing and debugging
-- Python 3.10+
-- Any Python package manager (uv, poetry, pipenv) - but NOT conda!
-- Access to an LLM (can be open source via Ollama, or cloud providers like OpenAI, Anthropic, Gemini)
-- No Machine Learning experience needed
-
-### ⚙️ Setup Instructions 
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/emarco177/langchain-course
-   cd langchain-course
-   ```
-2. **Choose your learning path**
-   
-   **For branch-based projects:**
-   ```bash
-   # Start with Hello World
-   git checkout project/hello-world
-   uv sync
-   uv run python main.py
-   
-   # Progress to Code Interpreter
-   git checkout project/code-interpreter
-   uv sync
-   uv run python main.py
-   ```
-   
-   **For external repository projects:**
-   ```bash
-   # Clone specific project repositories
-   git clone https://github.com/emarco177/ice_breaker
-   cd ice_breaker
-   # Follow project-specific setup instructions
-   ```
-
-3. **Follow the commits**
-   - Each commit represents a lesson or feature implementation
-   - Use `git log --oneline` to see the learning progression
-   - Checkout previous commits to understand the development process
-
-**External Projects:**
-- [Ice Breaker](https://github.com/emarco177/ice_breaker) - Social media profile analyzer
-- [Medium Analyzer](https://github.com/emarco177/blog-analyzer) - Content analysis and insights generator
-- [Documentation Helper](https://github.com/emarco177/documentation-helper) - AI documentation assistant
-- [Reflection Agent](https://github.com/emarco177/langgraph-course/tree/project/reflection-agent) - Self-improving agent with reflection and critique capabilities
-- [Reflexion Agent](https://github.com/emarco177/langgraph-course/tree/project/reflexion-agent) - Advanced self-correcting agent using reflexion techniques
-- [Agentic RAG](https://github.com/emarco177/langgraph-course/tree/project/agentic-rag) - Advanced retrieval-augmented generation system
-
-
-## 📚 Learning Objectives 
-
-By the end of this course, you'll be able to:
-
-- Build AI agents from scratch using modern frameworks
-- Implement tool calling and external API integrations
-- Create RAG systems with vector databases
-- Design multi-step reasoning workflows
-- Deploy agents to production environments
-- Handle error correction and self-improvement in agents
-- Optimize agent performance and cost efficiency
-
-
-
-
-
-## 🙏 Acknowledgements 
-
-Big thanks to the **LangChain / LangGraph** team and their excellent [documentation and tutorials](https://langchain-ai.github.io/langgraph/tutorials/introduction/) that make this course possible.
-
-## 🌟 Support
-
-If you find this project helpful, please consider:
-- ⭐ Starring the repository
-- 🐛 Reporting issues
-- 💡 Contributing improvements
-- 📢 Sharing with others
+### 4. `projects/rag-gist` ← you are here
+Builds a full RAG (Retrieval Augmented Generation) pipeline from scratch using LangChain and Pinecone. Covers data indexing, vector embeddings, and retrieval-based question answering.
 
 ---
 
-<div align="center">
+# RAG Gist — `projects/rag-gist`
 
-### 🔗 Connect with Me
+This branch builds a **RAG (Retrieval Augmented Generation)** pipeline from scratch using LangChain and Pinecone.
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://www.udemy.com/course/langchain/?referralCode=D981B8213164A3EA91AC)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/eden-marco/)
-[![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/EdenEmarco177)
+---
 
-**Built with ❤️ by Eden Marco**
+## Core Concepts
 
-</div>
+### Vector Embeddings
+![Vector Embeddings](images/dimension%201536(to%20hold%20more%20information).jpeg)
 
+Text cannot be stored or compared directly in a vector database. An **embedding model** converts text into a list of numbers (a vector) that captures the semantic meaning of the text. The example above shows a **1536-dimensional vector** — meaning each piece of text becomes a list of 1536 numbers. The more dimensions, the more information the vector can hold about the meaning of the text.
+
+---
+
+### Dense vs Sparse Vectors
+![Dense vs Sparse Vectors](images/pinecone%20vs%20dense.jpeg)
+
+There are two types of vectors used in search:
+
+- **Dense Vectors** — every dimension has a value (few zeros). Compact, lower dimensionality, captures **semantic meaning**. Used in word embeddings and modern AI search (e.g. OpenAI embeddings).
+- **Sparse Vectors** — mostly zeros, very high dimensionality. Captures **presence/absence** of words. Used in keyword-based search (e.g. TF-IDF, BM25, One-Hot encoding).
+
+In RAG systems, dense vectors are used for semantic search — finding chunks that *mean* the same thing, not just contain the same words.
+
+---
+
+### RAG Pipeline
+![RAG Pipeline](images/rag-architeture.jpeg)
+
+**RAG (Retrieval Augmented Generation)** gives the LLM access to your own documents at query time. It has two phases:
+
+**Phase 1 — Data Indexing (done once):**
+1. **Data Loading** — load your documents
+2. **Data Splitting** — split into smaller text chunks
+3. **Data Embedding** — convert each chunk into a vector
+4. **Data Storing** — store vectors in a Vector DB (Pinecone)
+
+**Phase 2 — Data Retrieval & Generation (done on every query):**
+1. User sends a query → converted to a vector
+2. Vector DB finds the most similar chunks (Top-K)
+3. Those chunks + the query are sent to the LLM
+4. LLM generates a response grounded in your documents
+
+---
+
+### Vector Similarity Metrics
+![Vector Similarity Metrics](images/vector%20search%20types.jpeg)
+
+When searching a Vector DB, similarity between vectors is measured using one of three metrics:
+
+| Metric | Measures | Range | Best For |
+|---|---|---|---|
+| **Cosine Similarity** | Angle between vectors | [-1, 1] | Text search, recommendation systems |
+| **Euclidean Distance** | Straight-line distance | [0, ∞) | Clustering, geometric data |
+| **Dot Product** | Magnitude + direction | (-∞, ∞) | Neural networks, optimization |
+
+**Key takeaway:** Cosine similarity is the most common for text/RAG — it focuses on the direction (meaning) of the vector, not its size, making it magnitude independent.
+
+---
+
+## Project Structure
+
+```
+projects/rag-gist/
+├── ingestion.py       ← Phase 1: load, split, embed, store into Pinecone
+├── pyproject.toml     ← dependencies
+└── images/            ← concept diagrams
+```
+
+## Tech Stack
+
+| Tool | Purpose |
+|---|---|
+| `langchain` | document loading, splitting, chaining |
+| `langchain-openai` | OpenAI embeddings + LLM |
+| `langchain-pinecone` | Pinecone vector store integration |
+| `pinecone` | cloud vector database |
+| `python-dotenv` | load API keys from `.env` |
+
+## Files
+
+### `ingestion.py` — Data Indexing (Phase 1)
+
+Handles the one-time data indexing pipeline:
+1. Loads documents
+2. Splits them into chunks
+3. Embeds each chunk using OpenAI embeddings
+4. Stores the vectors into Pinecone
+
+Run it once before querying:
+
+```bash
+uv run python ingestion.py
+```
+
+## Environment Variables
+
+Add these to your `.env` file:
+
+```
+OPENAI_API_KEY=...
+PINECONE_API_KEY=...
+```
