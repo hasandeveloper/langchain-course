@@ -114,6 +114,19 @@ Run it once before querying:
 uv run python ingestion.py
 ```
 
+### `retrieval.py` — Data Retrieval & Generation (Phase 2)
+
+![Retrieval Pipeline](images/retrivel-high-level.png)
+
+Handles answering questions using the indexed data:
+1. **Question** — user asks a question
+2. **Retrieve** — question is embedded and matched against Pinecone to find the most relevant chunks
+3. **Prompt** — retrieved chunks are injected into a prompt as context
+4. **LLM** — the LLM generates an answer grounded in the retrieved documents
+5. **Answer** — response returned to the user
+
+---
+
 ## Environment Variables
 
 Add these to your `.env` file:
