@@ -114,16 +114,39 @@ Run it once before querying:
 uv run python ingestion.py
 ```
 
-### `retrieval.py` — Data Retrieval & Generation (Phase 2)
+### `main.py` — Data Retrieval & Generation (Phase 2)
 
 ![Retrieval Pipeline](images/retrivel-high-level.png)
 
-Handles answering questions using the indexed data:
+> **Naive RAG** is the foundational architecture of AI knowledge retrieval. It functions as a linear, three-step process: indexing data chunks, retrieving them based on a user's query, and passing those retrieved documents alongside the prompt to an LLM to generate a grounded, factual response.
+
+Handles answering questions using the indexed data from Pinecone. Contains two implementations of the same RAG pipeline to show the difference:
+
+**The flow:**
 1. **Question** — user asks a question
-2. **Retrieve** — question is embedded and matched against Pinecone to find the most relevant chunks
-3. **Prompt** — retrieved chunks are injected into a prompt as context
+2. **Retrieve** — question is embedded and matched against Pinecone (`k=3` top chunks)
+3. **Prompt** — retrieved chunks are injected into a `ChatPromptTemplate` as `{context}`
 4. **LLM** — the LLM generates an answer grounded in the retrieved documents
 5. **Answer** — response returned to the user
+
+**Option 0 — Raw LLM (No RAG):**
+Calls the LLM directly without any retrieval. The LLM answers from its training data only — no grounding in your documents. Used as a baseline to compare against RAG.
+
+**Option 1 — Manual RAG (without LCEL):**
+Manually implements each step — retrieve → format → prompt → LLM → return. Verbose but easy to understand. Limitations: no streaming, no async, harder to compose.
+
+```python
+docs = retriever.invoke(query)          # retrieve top-3 chunks from Pinecone
+context = format_docs(docs)             # join into one string
+messages = prompt_template.format_messages(context=context, question=query)
+response = llm.invoke(messages)         # LLM answers using context
+```
+
+Run it:
+
+```bash
+uv run python main.py
+```
 
 ---
 
