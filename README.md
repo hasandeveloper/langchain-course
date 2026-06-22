@@ -100,11 +100,13 @@ projects/rag-gist/
 
 ### `ingestion.py` — Data Indexing (Phase 1)
 
+![Ingestion Pipeline](images/ingestion-high-level.png)
+
 Handles the one-time data indexing pipeline:
-1. Loads documents
-2. Splits them into chunks
-3. Embeds each chunk using OpenAI embeddings
-4. Stores the vectors into Pinecone
+1. **Load** — load documents using `TextLoader`
+2. **Split** — split into smaller chunks using `TextSplitter`
+3. **Embed** — convert chunks to vectors using `OpenAIEmbeddings`
+4. **Store** — store vectors in Pinecone using `PineconeVectorStore`
 
 Run it once before querying:
 
