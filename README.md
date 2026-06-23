@@ -142,6 +142,20 @@ messages = prompt_template.format_messages(context=context, question=query)
 response = llm.invoke(messages)         # LLM answers using context
 ```
 
+**Option 2 — LCEL RAG (Better Approach):**
+Same pipeline as Option 1 but written declaratively using the `|` pipe operator. Built-in streaming, async, and batching work out of the box.
+
+```python
+retrieval_chain = (
+    RunnablePassthrough.assign(
+        context=itemgetter("question") | retriever | format_docs
+    )
+    | prompt_template
+    | llm
+    | StrOutputParser()
+)
+```
+
 Run it:
 
 ```bash
@@ -150,7 +164,74 @@ uv run python main.py
 
 ---
 
+## LCEL — LangChain Expression Language
+
+LCEL uses the `|` pipe operator to chain steps together — just like Unix pipes. Each step's output becomes the next step's input.
+
+**How the chain works step by step:**
+
+```
+{"question": "what is Pinecone?"}
+        ↓  RunnablePassthrough.assign(context=...)
+{"question": "what is Pinecone?", "context": "chunk1\n\nchunk2..."}
+        ↓  prompt_template
+[SystemMessage, HumanMessage]  (filled with question + context)
+        ↓  llm
+AIMessage(content="Pinecone is a vector database...")
+        ↓  StrOutputParser()
+"Pinecone is a vector database..."   (plain string)
+```
+
+**`RunnablePassthrough.assign(context=...)`** — keeps the original dict AND adds a `context` key:
+- `itemgetter("question")` → pulls the question string out of the dict
+- `| retriever` → searches Pinecone, returns top-3 matching docs
+- `| format_docs` → joins the docs into one string
+
+The question is the **search key**, context is the **search result**.
+
+**Why LCEL over manual:**
+
+| | Manual (Option 1) | LCEL (Option 2) |
+|---|---|---|
+| Code style | Step by step | Declarative pipeline |
+| Streaming | No | `chain.stream()` |
+| Async | No | `chain.ainvoke()` |
+| Batch | No | `chain.batch()` |
+| Composable | Hard | Easy with `\|` |
+| Production ready | No | Yes |
+
+---
+
+## Quiz — Key Concepts
+
+**Q1: What is the primary purpose of `CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)`?**
+To break large documents into smaller, manageable pieces for embedding. LLMs and embedding models have token limits — you can't embed an entire document at once. Splitting into chunks of 1000 characters keeps each piece within limits and makes retrieval more precise.
+
+**Q2: What role do `OpenAIEmbeddings` serve in RAG ingestion?**
+They convert text chunks into high-dimensional vector representations (1536 dimensions). This is what allows semantic search — similar meaning → similar vectors → close together in vector space.
+
+**Q3: What happens when you call `PineconeVectorStore.from_documents(docs, embeddings, index_name="rag-index")`?**
+It creates embeddings for each document and stores both the vectors and the original text metadata in Pinecone. This is the final step of ingestion — after this, Pinecone can be queried.
+
+**Q4: What is the purpose of `vectorstore.as_retriever()`?**
+It converts the Pinecone vector store into a retriever interface for document search. The retriever is what the chain calls to find the most relevant chunks — it handles embedding the query and running the similarity search internally.
+
+**Q5: What does `create_stuff_documents_chain(llm, retrieval_qa_chat_prompt)` accomplish?**
+It creates a chain that combines retrieved documents with the LLM and prompt — "stuffing" all retrieved chunks into the prompt context so the LLM can answer based on them.
+
+**Q6: What happens when you invoke the retrieval chain with `{"input": query}`?**
+The query is embedded, similar documents are retrieved from Pinecone, and both the query and retrieved chunks are sent to the LLM together — the LLM then generates a grounded answer based on your documents.
+
+---
+
 ## Environment Variables
+
+Add these to your `.env` file:
+
+```
+OPENAI_API_KEY=...
+PINECONE_API_KEY=...
+```
 
 Add these to your `.env` file:
 
