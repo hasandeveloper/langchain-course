@@ -233,6 +233,45 @@ OPENAI_API_KEY=...
 PINECONE_API_KEY=...
 ```
 
+---
+
+## Knowledge — Using Tavily for Website Crawling
+
+In this branch we used `TextLoader` to load a local `.txt` file. But in real projects your data often lives on websites.
+
+**The problem with manual web scraping:**
+- Raw HTML is full of noise — nav bars, footers, ads, scripts, CSS
+- You have to write cleaning logic to strip all that out
+- Different websites have different structures — your scraper breaks constantly
+- JavaScript-rendered pages require headless browsers (Playwright, Selenium)
+
+**Tavily solves this:**
+Tavily crawls the URL for you and returns clean, structured text — no HTML parsing, no cleaning, no headless browser. Just pass the URL and get readable content back.
+
+```python
+from tavily import TavilyClient
+
+client = TavilyClient()
+
+# Instead of manually scraping + cleaning a webpage:
+result = client.extract(urls=["https://example.com/article"])
+clean_text = result["results"][0]["raw_content"]
+
+# Now load it into LangChain as a document and ingest into Pinecone
+```
+
+**vs manual scraping:**
+
+| | Manual Scraping | Tavily |
+|---|---|---|
+| HTML cleaning | You write it | Handled automatically |
+| JS-rendered pages | Needs Playwright/Selenium | Handled automatically |
+| Anti-bot protection | You handle it | Handled automatically |
+| Output | Raw HTML | Clean readable text |
+| Code needed | Lots | 3 lines |
+
+Use Tavily when your RAG data source is a website — it replaces the entire scrape + clean pipeline with a single API call.
+
 Add these to your `.env` file:
 
 ```
