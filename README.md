@@ -1,150 +1,165 @@
-# LangChain- Develop AI Agents with LangChain & LangGraph 🦜🔗
-
-**Learn LangChain and LangGraph by building real world AI Agents (Python, Latest Version V.1.0+)**
-
-This course is designed to teach you how to QUICKLY harness the power of the LangChain library for LLM applications. Build 3 end-to-end working LangChain based generative AI applications with no fluff, no toy examples - just real projects using real APIs and real-world skills.
-
-![LangChain Logo](/static/LangChain_OSS%20Lockup_light.png)
-![LangGraph Logo](/static/LangGraph_OSS%20Lockup_light.png)
-
-[![Twitter Follow](https://img.shields.io/twitter/follow/EdenMarco177?style=social)](https://twitter.com/EdenMarco177)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
-
-[![udemy](https://img.shields.io/badge/LangChain%20Udemy%20Course%20Coupon%20%2412.99-brightgreen)](https://www.udemy.com/course/langchain/?couponCode=APRIL-2026)
-
-
-
-## 💡 What You'll Build 
-
-This course takes you through building 7 real-world AI agent projects, from simple hello-world applications to advanced agentic systems:
-
-| Project | Type | Description |
-|---------|------|-------------|
-| 👋 [LangChain Hello World](https://github.com/emarco177/langchain-course/tree/project/hello-world) | Branch (`project/hello-world`) | Your first AI agent - basic structure and LLM integration |
-| 🔎  [Modern Search Agent](https://github.com/emarco177/ice_breaker/tree/project/search-agent) | Branch (`project/search-agent`) | Build search agents using LangChain v.1's `create_agent` interface with custom tools, Tavily integration, and structured outputs |
-| 🧠 [Agents Under The Hood](https://github.com/emarco177/langchain-course/tree/project/agents-under-the-hood) | Branch (`project/agents-under-the-hood`) | Understanding reasoning and acting patterns in AI agents |
-| 📄 [RAG Gist](https://github.com/emarco177/langchain-course/tree/project/rag-gist) | Branch (`project/rag-gist`) | The gist of retrieval-augmented generation |
-| 📚 [Documentation Helper](https://github.com/emarco177/documentation-helper) | External Repo | Intelligent documentation assistant |
-| 💻 [Code Interpreter](https://github.com/emarco177/langchain-course/tree/project/code-interpreter) | Branch (`project/code-interpreter`) | AI-powered code execution and analysis |
-| 🪞 [Reflection Agent](https://github.com/emarco177/langgraph-course/tree/project/reflection-agent) | External Repo | Self-improving agent with reflection and critique capabilities |
-| 🔄 [Reflexion Agent](https://github.com/emarco177/langgraph-course/tree/project/reflexion-agent) | External Repo | Advanced self-correcting agent using reflexion techniques |
-| 🤖 [Agentic RAG](https://github.com/emarco177/langgraph-course/tree/project/agentic-rag) | External Repo | Advanced retrieval-augmented generation system |
-
-## 📚 Course Highlights 
-
-- **7 Complete Projects** - From beginner to advanced implementations including Ice Breaker, Documentation Helper, and Code Interpreter
-- **Real-World Applications** - Build agents that solve actual problems with live APIs
-- **Modern Tech Stack** - LangChain v0.3+, LangGraph, Pinecone, FAISS, Streamlit
-- **Practical Skills** - Learn RAG, vector databases, prompt engineering, and agent workflows
-- **Interactive Learning** - Follow commits chronologically for step-by-step learning
-
-## 🤔 Learning Path 
-
-### Phase 1: Foundations
-1. **Hello World Chain** - Basic agent structure and LLM integration
-2. **Code Interpreter** - Tool calling and code execution capabilities
-
-### Phase 2: Real-World Applications
-3. **Ice Breaker** - Data collection and social media integration
-4. **Documentation Helper** - RAG implementation and knowledge management
-
-### Phase 3: Advanced Concepts
-5. **Blog Analyzer** - Multi-step reasoning and content analysis
-6. **Agentic RAG** - Self-correcting agents with memory and planning
-
-## ▶️ Getting Started 
-
-### 🛠️ Prerequisites 
-- **This is not a beginner course** - Basic software engineering concepts needed
-- Familiarity with: git, Python, environment variables, classes, testing and debugging
-- Python 3.10+
-- Any Python package manager (uv, poetry, pipenv) - but NOT conda!
-- Access to an LLM (can be open source via Ollama, or cloud providers like OpenAI, Anthropic, Gemini)
-- No Machine Learning experience needed
-
-### ⚙️ Setup Instructions 
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/emarco177/langchain-course
-   cd langchain-course
-   ```
-2. **Choose your learning path**
-   
-   **For branch-based projects:**
-   ```bash
-   # Start with Hello World
-   git checkout project/hello-world
-   uv sync
-   uv run python main.py
-   
-   # Progress to Code Interpreter
-   git checkout project/code-interpreter
-   uv sync
-   uv run python main.py
-   ```
-   
-   **For external repository projects:**
-   ```bash
-   # Clone specific project repositories
-   git clone https://github.com/emarco177/ice_breaker
-   cd ice_breaker
-   # Follow project-specific setup instructions
-   ```
-
-3. **Follow the commits**
-   - Each commit represents a lesson or feature implementation
-   - Use `git log --oneline` to see the learning progression
-   - Checkout previous commits to understand the development process
-
-**External Projects:**
-- [Ice Breaker](https://github.com/emarco177/ice_breaker) - Social media profile analyzer
-- [Medium Analyzer](https://github.com/emarco177/blog-analyzer) - Content analysis and insights generator
-- [Documentation Helper](https://github.com/emarco177/documentation-helper) - AI documentation assistant
-- [Reflection Agent](https://github.com/emarco177/langgraph-course/tree/project/reflection-agent) - Self-improving agent with reflection and critique capabilities
-- [Reflexion Agent](https://github.com/emarco177/langgraph-course/tree/project/reflexion-agent) - Advanced self-correcting agent using reflexion techniques
-- [Agentic RAG](https://github.com/emarco177/langgraph-course/tree/project/agentic-rag) - Advanced retrieval-augmented generation system
-
-
-## 📚 Learning Objectives 
-
-By the end of this course, you'll be able to:
-
-- Build AI agents from scratch using modern frameworks
-- Implement tool calling and external API integrations
-- Create RAG systems with vector databases
-- Design multi-step reasoning workflows
-- Deploy agents to production environments
-- Handle error correction and self-improvement in agents
-- Optimize agent performance and cost efficiency
-
-
-
-
-
-## 🙏 Acknowledgements 
-
-Big thanks to the **LangChain / LangGraph** team and their excellent [documentation and tutorials](https://langchain-ai.github.io/langgraph/tutorials/introduction/) that make this course possible.
-
-## 🌟 Support
-
-If you find this project helpful, please consider:
-- ⭐ Starring the repository
-- 🐛 Reporting issues
-- 💡 Contributing improvements
-- 📢 Sharing with others
+# Branch: `project/data-policy` — Using Managed LLMs: Privacy, Data Retention & EULA
 
 ---
 
-<div align="center">
+## Branches
 
-### 🔗 Connect with Me
+**1. `project/hello-world`**
+The starting point. Sets up the project, installs dependencies, and runs a basic LangChain agent with a mock search tool. No real API calls — just enough to verify everything works and understand the basic structure of an agent.
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://www.udemy.com/course/langchain/?referralCode=D981B8213164A3EA91AC)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/eden-marco/)
-[![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/EdenEmarco177)
+**2. `project/search-agent`**
+Builds a real search agent using `create_agent()` with Tavily for live web search. Introduces structured output via Pydantic models (`AgentResponse`, `Source`). This is Layer 0 — LangChain and LangGraph handle the entire agent loop for you.
 
-**Built with ❤️ by Eden Marco**
+**3. `projects/agents-under-the-hood`**
+Breaks open the black box. Shows how the agent loop works internally by implementing it manually, without relying on `create_react_agent()`. Contains two files covering Layer 1 in two ways — once with LangChain primitives, once with raw Ollama.
 
-</div>
+**4. `projects/rag-gist`**
+Introduces Retrieval-Augmented Generation from first principles. Covers document loading, chunking strategies, embeddings, and vector stores. Shows three RAG implementations: raw LLM, manual RAG without LCEL, and a full LCEL pipeline.
 
+**5. `project/agent-rag`**
+Combines agents and RAG. An LLM-powered agent dynamically decides when and how to retrieve from a Pinecone vector store populated with LangChain documentation. Uses `@tool` with `response_format="content_and_artifact"` for structured retrieval.
+
+**6. `project/data-policy` ← you are here**
+Covers privacy, data retention, and EULA considerations when using managed LLMs (OpenAI, Anthropic, Google) vs self-managed LLMs (Ollama). Essential reading before taking any LLM application to production.
+
+---
+
+When taking an LLM application to production, understanding what happens to your data is critical. This branch covers the key differences between **managed LLMs** (cloud APIs) and **self-managed LLMs** (local models) from a privacy, compliance, and data governance perspective.
+
+---
+
+## The Core Question
+
+Every time you send a prompt to a cloud LLM API:
+
+```
+Your App → [your data travels over the internet] → OpenAI / Anthropic / Google servers
+                                                          ↓
+                                                   Model processes it
+                                                          ↓
+                                                   Response sent back
+```
+
+That data may be **logged, retained, and used for model training** depending on the provider's terms.
+
+---
+
+## Managed LLMs (OpenAI, Anthropic, Google)
+
+You call an API. The model runs on someone else's infrastructure. Fast, powerful, and easy to use — but your data leaves your environment.
+
+### Data Retention
+
+| Provider | Default Retention | Zero Retention Option |
+|---|---|---|
+| OpenAI | 30 days | Yes — Zero Data Retention (ZDR), enterprise plans only |
+| Anthropic | 30 days | Yes — enterprise agreement required |
+| Google Gemini | Up to 30 days | Yes — Vertex AI with a Data Processing Addendum (DPA) |
+
+By default, most providers retain your API inputs and outputs for up to 30 days for abuse monitoring and debugging.
+
+### Privacy Risks
+
+- **PII (Personally Identifiable Information)** — names, emails, phone numbers sent in prompts are processed by a third party
+- **Trade secrets** — internal documents used in RAG pipelines are sent to external servers
+- **User conversations** — chat history is stored on the provider's infrastructure
+- **Model training** — some providers may use your prompts to improve their models unless you explicitly opt out
+
+### EULA Restrictions
+
+- Sending **medical data (PHI)** to a managed LLM without a HIPAA Business Associate Agreement (BAA) violates HIPAA
+- Sending **classified or export-controlled data** to any cloud API is typically prohibited
+- You are responsible for ensuring compliance with **GDPR**, **HIPAA**, **SOC2**, and any other applicable regulations based on the data you send
+- Provider terms of service can change — what is allowed today may not be tomorrow
+
+---
+
+## Self-Managed LLMs (Ollama, local models)
+
+You download and run the model on your own hardware or private cloud. Data **never leaves your environment**.
+
+```bash
+# Run a model locally — no API call, no data transfer
+ollama run llama3.2
+
+# Use with LangChain
+from langchain.chat_models import init_chat_model
+model = init_chat_model("ollama:llama3.2")
+```
+
+### Benefits
+
+- **Full data sovereignty** — zero third-party exposure, ever
+- **No EULA restrictions** — open-source models (Llama, Mistral, Qwen) have permissive licenses
+- **GDPR / HIPAA compliant by default** — no data transfer means no cross-border data flow issues
+- **No per-token cost** — you pay for hardware, not API calls
+- **Predictable latency** — no network round-trip to an external server
+
+### Trade-offs
+
+- **Less capable models** — local models (7B–70B parameters) are generally weaker than GPT-4o or Claude for complex reasoning
+- **Hardware requirements** — needs a GPU for acceptable performance (Apple Silicon M-series works well)
+- **You manage everything** — model updates, security patches, uptime, and scaling are your responsibility
+
+---
+
+## Side-by-Side Comparison
+
+| | Managed LLM (OpenAI) | Self-Managed LLM (Ollama) |
+|---|---|---|
+| **Data location** | Third-party servers | Your machine / private infra |
+| **Data retention** | Up to 30 days (default) | None — never stored externally |
+| **Model training on your data** | Possible unless opted out | Never |
+| **GDPR compliance** | Requires DPA with provider | Compliant by default |
+| **HIPAA compliance** | Requires BAA with provider | Compliant by default |
+| **Cost** | Per token (usage-based) | Hardware cost only |
+| **Model capability** | State of the art | Good but smaller |
+| **Setup complexity** | Simple (API key) | Moderate (install + hardware) |
+| **Internet required** | Yes | No |
+
+---
+
+## Decision Guide
+
+| Your situation | Recommendation |
+|---|---|
+| Learning / prototyping | Managed (OpenAI) — fast, easy, best models |
+| Handling user PII | Self-managed, or managed with ZDR enterprise plan |
+| Healthcare app with patient data (HIPAA) | Self-managed, or managed with a signed HIPAA BAA |
+| Internal company documents in RAG | Self-managed, or ZDR enterprise plan |
+| Financial / legal regulated industry | Self-managed or legal review of provider terms |
+| Production app, no sensitive data | Managed with data retention opt-out enabled |
+| Fully air-gapped environment | Self-managed only |
+
+---
+
+## How This Applies to This Course
+
+In the `project/agent-rag` branch, `ingestion.py` sends **LangChain documentation** (publicly available data) to OpenAI for embedding — this is safe and appropriate.
+
+But if you were building a real product and ingesting **internal company documents** or **customer data**, you would need to choose:
+
+**Option A — Stay managed, get ZDR:**
+```python
+# OpenAI ZDR — requires enterprise agreement
+embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
+# Works the same in code, but your data is not retained by OpenAI
+```
+
+**Option B — Switch to local embeddings:**
+```python
+# Ollama — runs entirely on your machine, zero data leaves
+from langchain_ollama import OllamaEmbeddings
+embeddings = OllamaEmbeddings(model="nomic-embed-text")
+vectorstore = Chroma(persist_directory="chroma_db", embedding_function=embeddings)
+```
+
+Option B requires no enterprise agreement and works offline — but you need Ollama installed and the model downloaded (`ollama pull nomic-embed-text`).
+
+---
+
+## Key Takeaway
+
+> **The model doesn't care about your data. Your legal and compliance team does.**
+
+Choosing between managed and self-managed LLMs is not a technical decision — it is a **data governance decision**. Match your infrastructure to the sensitivity of the data you handle.
