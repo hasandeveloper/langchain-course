@@ -292,3 +292,116 @@ Because `LANGSMITH_TRACING=true` is set, every agent run is automatically traced
 - The full message history of the agent loop
 
 Go to [smith.langchain.com](https://smith.langchain.com) → project `agent-rag` to see traces.
+
+---
+
+## Prompting Techniques
+
+### System Prompting
+
+A system prompt is a message sent to the LLM **before** the user's message. It sets the model's role, rules, and constraints.
+
+```python
+system_prompt = (
+    "You are a helpful AI assistant that answers questions about LangChain documentation. "
+    "Always cite the sources you use in your answers."
+)
+agent = create_agent(model, tools=[retrieve_context], system_prompt=system_prompt)
+```
+
+It answers: *"Who are you and how should you behave?"*
+
+---
+
+### Context Engineering
+
+Context engineering is the broader practice of **deliberately designing everything the model sees** — not just the system prompt, but the full context window.
+
+| What goes in the context | Example |
+|---|---|
+| System prompt | Role, rules, tone |
+| Retrieved documents | RAG chunks from Pinecone |
+| Tool results | Output from `retrieve_context()` |
+| Conversation history | Previous messages |
+| Examples | Few-shot demonstrations |
+
+The idea: **garbage in, garbage out**. If you give the model irrelevant or noisy context, the answer will be bad even if the model is excellent.
+
+```
+System Prompt     ← tells the model WHO it is
+Retrieved Docs    ← tells the model WHAT IT KNOWS
+Message History   ← tells the model WHAT WAS SAID
+Tool Results      ← tells the model WHAT IT FOUND
+─────────────────────────────────────────────────
+All of this together = Context Engineering
+```
+
+System prompting is one tool inside context engineering. Context engineering is the full discipline of controlling what goes into the context window to get the best possible output.
+
+In this branch, RAG retrieves only the *relevant* chunks from 57 total so the model isn't flooded with irrelevant docs — that is context engineering in action.
+
+---
+
+### Zero-Shot Prompting
+
+Give the model a task with **no examples** — just instructions. Relies entirely on what the model already learned during training.
+
+```python
+"What is the capital of France?"
+# Model answers from training knowledge alone: "Paris"
+```
+
+Works well for simple, well-known tasks. The `system_prompt` in `main.py` is zero-shot — no examples are provided, just the role and rules.
+
+---
+
+### Few-Shot Prompting
+
+Give the model **a few examples** of input → output before the real question. The model learns the pattern from the examples inside the context window — no retraining needed.
+
+```python
+system_prompt = """
+Classify the sentiment of the text.
+
+Text: "I love this product!" → Positive
+Text: "This is terrible." → Negative
+Text: "It's okay I guess." → Neutral
+
+Text: "Absolutely amazing experience!" →
+"""
+# Model answers: "Positive"
+```
+
+Best for custom output formats, classification, and extraction tasks where you want the model to follow a specific structure.
+
+---
+
+### Chain of Thought (CoT) Prompting
+
+Tell the model to **think step by step** before giving the final answer. Forces it to reason through the problem rather than guess directly.
+
+```python
+# Without CoT — model might guess
+"If John has 5 apples, gives away 2, then buys 3 more, how many does he have?"
+
+# With CoT — model reasons through it
+"Think step by step. If John has 5 apples, gives away 2, then buys 3 more, how many?"
+# Step 1: John starts with 5
+# Step 2: Gives away 2 → 5 - 2 = 3
+# Step 3: Buys 3 more → 3 + 3 = 6
+# Answer: 6
+```
+
+Dramatically improves performance on math, logic, and multi-step reasoning tasks.
+
+---
+
+### Summary
+
+| Technique | What you provide | Best for |
+|---|---|---|
+| **Zero-Shot** | Just the task | Simple, common questions |
+| **Few-Shot** | Task + 2–5 examples | Custom formats, classification, extraction |
+| **Chain of Thought** | Task + "think step by step" | Math, logic, multi-step reasoning |
+| **System Prompt** | Role + rules before the conversation | Controlling agent behavior and tone |
+| **Context Engineering** | Everything in the context window | Getting the best output from any model |
