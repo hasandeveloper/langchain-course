@@ -1,0 +1,38 @@
+[project]
+name = "langchain-course"
+version = "0.1.0"
+description = "LangChain Course - Agentic RAG"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "beautifulsoup4",
+    "black",
+    "tiktoken",
+    "openai",
+    "unstructured",
+    "nltk",
+    "fastapi",
+    "jinja2",
+    "uvicorn",
+    "streamlit",
+    "streamlit-chat",
+    "tqdm",
+    "isort",
+    "langchainhub",
+    "firecrawl-py",
+    "langchain-community",
+    "langsmith",
+    "pillow",
+    "langchain-pinecone",
+    "certifi",
+    "langchain-chroma",
+    "python-dotenv",
+    "langchain-tavily",
+    "langchain-openai",
+    "protobuf<4.0",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel",
+]
