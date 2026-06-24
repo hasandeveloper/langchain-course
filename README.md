@@ -163,3 +163,69 @@ Option B requires no enterprise agreement and works offline — but you need Oll
 > **The model doesn't care about your data. Your legal and compliance team does.**
 
 Choosing between managed and self-managed LLMs is not a technical decision — it is a **data governance decision**. Match your infrastructure to the sensitivity of the data you handle.
+
+---
+
+## AI-Based UI/UX — CopilotKit
+
+Once your agent backend is built (LangGraph + FastAPI), the next challenge is **how users actually interact with it**. A raw API is not a product. CopilotKit solves this by providing a ready-made frontend layer designed specifically for AI agents.
+
+- Docs: [docs.copilotkit.ai/langgraph-fastapi](https://docs.copilotkit.ai/langgraph-fastapi)
+- Website: [copilotkit.ai](https://www.copilotkit.ai/)
+
+### What Is CopilotKit?
+
+CopilotKit is an open-source framework that connects your LangGraph agent backend to a user-facing frontend through the **AG-UI protocol** — a standardized event stream that drives UI components in real time as the agent works.
+
+Instead of building a custom chat UI from scratch, you drop in CopilotKit components and your agent immediately has a production-ready interface.
+
+### How It Works
+
+```
+┌──────────────────┐        AG-UI Protocol         ┌─────────────────────┐
+│   React Frontend  │ ◄────── event stream ────────► │  LangGraph + FastAPI │
+│  (CopilotKit UI)  │                               │  (your agent logic)  │
+└──────────────────┘                               └─────────────────────┘
+```
+
+1. Your LangGraph agent runs on a FastAPI backend
+2. CopilotKit connects to it via the AG-UI protocol
+3. The React frontend renders agent state, tool calls, and responses as interactive UI components in real time
+
+### Key Features
+
+| Feature | What it does |
+|---|---|
+| **Generative UI** | Agent renders rich interactive components dynamically — not just text responses |
+| **Human-in-the-loop** | Built-in interrupt controls so users can guide or correct the agent mid-run |
+| **Shared state** | Frontend and agent backend share state — UI reflects exactly what the agent knows |
+| **Thread persistence** | Conversation history and agent state survive page reloads and sessions |
+| **Multi-surface** | Same backend works across web (React, Vue), mobile (iOS, Android), and Slack/Teams |
+| **Pre-built components** | Chat UI, agent status, tool rendering — customisable, not built from scratch |
+
+### Why This Matters
+
+Without CopilotKit:
+- You write your own WebSocket or SSE streaming logic
+- You manually render tool call results in the UI
+- You rebuild state sync between frontend and agent
+- You handle human-in-the-loop interrupts yourself
+
+With CopilotKit:
+- One SDK connects your LangGraph agent to a full UI
+- Generative UI means the agent can render forms, tables, or custom components — not just chat bubbles
+- Works with any agent framework: LangGraph, CrewAI, Pydantic AI, or custom
+
+### Example Stack
+
+```
+project/agent-rag (this course)
+    └─ ingestion.py       → populates Pinecone
+    └─ main.py            → LangGraph agent with retrieve_context tool
+
++ CopilotKit
+    └─ FastAPI wrapper    → exposes agent via AG-UI protocol
+    └─ React frontend     → CopilotKit components render the agent UI
+```
+
+This is the natural next step after building an agent backend — give it a real user interface without writing UI code from scratch.
